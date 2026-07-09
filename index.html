@@ -1,79 +1,291 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics  -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TGQVZJN4GS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkgannon's Software Projects</title>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGQVZJN4GS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TGQVZJN4GS');
+    </script>
 
-  gtag('config', 'G-TGQVZJN4GS');
-</script>
+    <!-- It's dangerous to code alone! Take this. -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-base: #050508;
+            --bg-panel: #0d0d12;
+            --sheikah-blue: #00f0ff; /* Electric Blue */
+            --sheikah-glow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
+            --text-main: #d1d1d6;
+            --text-muted: #80808a;
+            --wisdom: #3498db;
+            --power: #e74c3c;
+            --courage: #2ecc71;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, #111a24 0%, transparent 50%);
+        }
+
+        /* Subtle scanline effect overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h2, h3 {
+            color: var(--sheikah-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: var(--sheikah-glow);
+            margin-top: 0;
+        }
+
+        h2 { font-size: 2.2rem; border-bottom: 2px solid var(--sheikah-blue); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+        p { margin-bottom: 2rem; color: var(--text-muted); }
+
+        a {
+            color: var(--sheikah-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: var(--sheikah-glow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-left: 4px solid var(--sheikah-blue);
+            padding: 1.5rem;
+            border-radius: 2px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--sheikah-glow);
+            border-left-color: #fff;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc { flex-grow: 1; margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .links-group a { display: inline-flex; align-items: center; }
+        .links-group a::before { content: "►"; font-size: 0.6rem; margin-right: 8px; color: var(--text-muted); }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sheikah-blue), transparent);
+            margin: 4rem 0;
+            opacity: 0.3;
+        }
+
+        .discord-btn {
+            display: inline-block;
+            border: 1px solid var(--sheikah-blue);
+            padding: 0.8rem 1.5rem;
+            color: var(--sheikah-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .discord-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+        }
+
+        /* Easter Egg / Secret Elements */
+        .gossip-stone {
+            position: fixed;
+            bottom: -20px;
+            right: 10px;
+            font-size: 12rem;
+            color: var(--sheikah-blue);
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: -1;
+            line-height: 1;
+            letter-spacing: -1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-	<h2>Linkgannon's Software Projects</h2>
-	<b>I am currently in the process of migrating and hosting all of my projects on this site. I currently only have links for my Activate Projects. The rest should be coming in the very near future.</b>
-	<div>
-		<h3>Active Projects</h3>
-		These are the projects I am actively maintaining and supporting.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="https://linkgannon.github.io/GenConPlanner/publish.htm">GenCon Event Planner</a></b><br/>
-		Advanced application for helping you schedule events for you and your group for Gen Con.<br/><br/>
-		Relavent Link: <a href="https://www.reddit.com/r/gencon/comments/ugae4h/gen_con_event_planner_v4/">https://www.reddit.com/r/gencon/comments/ugae4h/gen_con_event_planner_v4/</a><br/>
-		Documentation: <a href="https://linkgannon.github.io/GenConPlanner/Gen_Con_Event_Planner_Documentation.pdf">https://linkgannon.github.io/GenConPlanner/Gen_Con_Event_Planner_Documentation.pdf</a><br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="https://linkgannon.github.io/TwitchVidConverter/publish.htm">Twitch Vid Converter</a></b><br/>
-		This software is intended to help Twitch content creators convert the file names of downloaded clips and highlights to the name of the videos that they reference.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="https://linkgannon.github.io/GW2CommerceAssistant/publish.htm">GW2 Commerce Assistant</a></b><br/>
-		This software constantly monitors all items on the trading post in Guild Wars 2, uses an advanced scoring algorithm (or your own custom algorithm) for determing a "flippability" score, then uses that score to tell you which items are the most profitable to flip. For this project, I worked with professional economists to determine the necessary parameter and create a default flippability algorithm based on the GW2 markets at that time.<br/><br/>
-		Relavent Link: <a href="https://www.reddit.com/r/Guildwars2/comments/7pq4i7/gw2_commerce_assistant/">https://www.reddit.com/r/Guildwars2/comments/7pq4i7/gw2_commerce_assistant/</a><br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="https://linkgannon.github.io/RotationViewer/RotationViewerSetup.zip">GW2 Rotation Viewer</a></b><br/>
-		This software let you create an easy to read view for your Guild Wars 2 rotations.<br/><br/>
-		Relavent Link: <a href="https://www.reddit.com/r/Guildwars2/comments/6exgun/gw2_rotation_creation_program/">https://www.reddit.com/r/Guildwars2/comments/6exgun/gw2_rotation_creation_program/</a><br/><br/><br/>
-	</div>
-	<div>
-		<b>Protodeck Card Studio - Coming Soon</b> (like, Hollow Knight: Silksong soon)<br/>
-		Advanced, professional-grade software for easily creating card games by designing card templates, then generating cards based on those templates.<br/><br/>
-	</div>
-	
-	<hr/>
-	
-	<div>
-		<h3>Old Projects</h3>
-		These are the projects that I have stopped maintaining. Some may work and some may not. If you are really interested in one of these projects, let me know, and I may decide to update it.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="">GW2 Item Checker</a></b><br/>
-		Small console application for Guild Wars 2 that let's you add multiple API keys for different accounts, then tells you the total number of Mystic Coils and Laurels you have combined on those accounts.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="">GW2 Decorations Viewer</a></b><br/>
-		A small application that lets you scroll through images and basic info of Guild Wars 2 guild decorations.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="">D&D 3.5e Spell & Feat Cards</a></b><br/>
-		This program will generate spell or feat cards with all the relevant information on them for every spell and feat in D&D 3.5e (including the MANY non-core books). These cards can be exported to a printable PDF file.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="">DM Workshop Viewer</a></b><br/>
-		A scroll view of the MANY different D&D 3D printable models designed by DM Workshop on Shapeways. Clicking on one will open a link to the website where you can download the 3d file.<br/><br/><br/>
-	</div>
-	<div>
-		<b><a href="">Game Manager</a></b><br/>
-		A simple program to help keep track of what games you are playing, as well as what tasks you are trying to accomplish in each game.<br/><br/>
-	</div>
-	
-	<hr/>
-	
-	<div>
-		<h3>Get in Touch</h3>
-		If you have any questions or comments related to these projects, this Discord is the dedicated place for that: <a href="https://discord.gg/e2AmC9F">https://discord.gg/e2AmC9F</a>
-	</div>
+    <div class="container">
+        <header>
+            <h2>Linkgannon's Software Projects</h2>
+            <p style="color: var(--text-main);">
+                System Status: <b>MIGRATING</b>.<br/> 
+                I am currently in the process of migrating and hosting all of my projects on this site. I currently only have links for my Active Projects. The rest should be coming in the very near future.
+            </p>
+        </header>
+
+        <section id="hyrule-field">
+            <h3>Active Projects</h3>
+            <p>These are the projects I am actively maintaining and supporting.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">
+                        <a href="https://linkgannon.github.io/GenConPlanner/publish.htm">GenCon Event Planner</a>
+                    </div>
+                    <div class="card-desc">Advanced application for helping you schedule events for you and your group for Gen Con.</div>
+                    <div class="links-group">
+                        <a href="https://www.reddit.com/r/gencon/comments/ugae4h/gen_con_event_planner_v4/">Relevant Link (Reddit)</a>
+                        <a href="https://linkgannon.github.io/GenConPlanner/Gen_Con_Event_Planner_Documentation.pdf">Documentation (PDF)</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <a href="https://linkgannon.github.io/TwitchVidConverter/publish.htm">Twitch Vid Converter</a>
+                    </div>
+                    <div class="card-desc">This software is intended to help Twitch content creators convert the file names of downloaded clips and highlights to the name of the videos that they reference.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <a href="https://linkgannon.github.io/GW2CommerceAssistant/publish.htm">GW2 Commerce Assistant</a>
+                    </div>
+                    <div class="card-desc">Constantly monitors all items on the Trading Post in Guild Wars 2, uses an advanced scoring algorithm for determining a "flippability" score, then tells you which items are the most profitable to flip. Worked with professional economists to create the default algorithm.</div>
+                    <div class="links-group">
+                        <a href="https://www.reddit.com/r/Guildwars2/comments/7pq4i7/gw2_commerce_assistant/">Relevant Link (Reddit)</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <a href="https://linkgannon.github.io/RotationViewer/RotationViewerSetup.zip">GW2 Rotation Viewer</a>
+                    </div>
+                    <div class="card-desc">This software lets you create an easy-to-read view for your Guild Wars 2 rotations.</div>
+                    <div class="links-group">
+                        <a href="https://www.reddit.com/r/Guildwars2/comments/6exgun/gw2_rotation_creation_program/">Relevant Link (Reddit)</a>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left-color: var(--text-muted);">
+                    <div class="card-title" style="color: var(--text-muted);">
+                        Protodeck Card Studio
+                    </div>
+                    <div class="card-desc">Advanced, professional-grade software for easily creating card games by designing card templates, then generating cards based on those templates.</div>
+                    <div class="links-group">
+                        <span style="color: var(--sheikah-blue); font-size: 0.85rem;">[STATUS: Coming Soon] (like, Hollow Knight: Silksong soon)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr/>
+
+        <section id="dark-world">
+            <h3>Archive / Old Projects</h3>
+            <p>Projects I have stopped maintaining. Some may work and some may not. If you are really interested in one of these projects, let me know, and I may decide to update it.</p>
+
+            <div class="grid" style="opacity: 0.7;">
+                <div class="card">
+                    <div class="card-title"><a href="#">GW2 Item Checker</a></div>
+                    <div class="card-desc">Small console application for Guild Wars 2 that lets you add multiple API keys for different accounts, then tells you the total number of Mystic Coins and Laurels you have combined.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><a href="#">GW2 Decorations Viewer</a></div>
+                    <div class="card-desc">A small application that lets you scroll through images and basic info of Guild Wars 2 guild decorations.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><a href="#">D&D 3.5e Spell & Feat Cards</a></div>
+                    <div class="card-desc">Generates spell or feat cards with all relevant information for every spell and feat in D&D 3.5e (including non-core books). Exportable to a printable PDF.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><a href="#">DM Workshop Viewer</a></div>
+                    <div class="card-desc">A scroll view of the MANY different D&D 3D printable models designed by DM Workshop on Shapeways. Links directly to the download pages.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><a href="#">Game Manager</a></div>
+                    <div class="card-desc">A simple program to help keep track of what games you are playing, as well as what tasks you are trying to accomplish in each game.</div>
+                </div>
+            </div>
+        </section>
+
+        <hr/>
+
+        <footer id="ocarina-comms">
+            <h3>Get in Touch</h3>
+            <p>If you have any questions or comments related to these projects, this Discord is the dedicated place for that.</p>
+            <a href="https://discord.gg/e2AmC9F" class="discord-btn" title="Hey! Listen!">Initialize Comms Link</a>
+        </footer>
+    </div>
+
+    <!-- Background Easter Egg -->
+    <div class="gossip-stone">
+        ▲<br>▲ ▲
+    </div>
+
+    <script>
+        // A secret message for fellow developers who check the console
+        console.log("%cIt's a secret to everybody.", "color: #00f0ff; font-family: monospace; font-size: 16px; border: 1px solid #00f0ff; padding: 10px;");
+    </script>
 </body>
 </html>
