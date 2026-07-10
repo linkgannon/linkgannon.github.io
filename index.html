@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linkgannon's Software Projects</title>
     
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGQVZJN4GS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,8 +13,6 @@
       gtag('config', 'G-TGQVZJN4GS');
     </script>
 
-    <!-- It's dangerous to code alone! Take this. -->
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -28,9 +25,6 @@
             --sheikah-glow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
             --text-main: #d1d1d6;
             --text-muted: #80808a;
-            --wisdom: #3498db;
-            --power: #e74c3c;
-            --courage: #2ecc71;
         }
 
         body {
@@ -58,6 +52,8 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 3rem 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
         h2, h3 {
@@ -151,18 +147,16 @@
             background: rgba(0, 240, 255, 0.2);
         }
 
-        /* Easter Egg / Secret Elements */
+        /* Upgraded Triforce Easter Egg */
         .gossip-stone {
             position: fixed;
-            bottom: -20px;
-            right: 10px;
-            font-size: 12rem;
-            color: var(--sheikah-blue);
-            opacity: 0.02;
+            bottom: 20px;
+            right: 20px;
             pointer-events: none;
-            z-index: -1;
-            line-height: 1;
-            letter-spacing: -1rem;
+            z-index: 1;
+            /* Adjust opacity here to make it more or less visible (0.0 to 1.0) */
+            opacity: 0.15; 
+            filter: drop-shadow(0 0 10px var(--sheikah-blue));
         }
         
         @media (max-width: 600px) {
@@ -278,9 +272,12 @@
         </footer>
     </div>
 
-    <!-- Background Easter Egg -->
     <div class="gossip-stone">
-        ▲<br>▲ ▲
+        <svg width="150" height="130" viewBox="0 0 100 87" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,0 75,43.3 25,43.3" fill="var(--sheikah-blue)" />
+            <polygon points="25,43.3 50,86.6 0,86.6" fill="var(--sheikah-blue)" />
+            <polygon points="75,43.3 100,86.6 50,86.6" fill="var(--sheikah-blue)" />
+        </svg>
     </div>
 
     <script>
